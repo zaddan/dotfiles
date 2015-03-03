@@ -1,15 +1,9 @@
 
-"lad pathogen to manage plugins
 filetype off
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
 filetype plugin indent on
-:iab <expr> dts strftime("%c")
 
 " Change the Leader Key To Something Easier
 let mapleader=","
-
-let g:EasyMotion_leader_key = ';'
 
 " Folding
 " zf: fold selection
@@ -20,17 +14,6 @@ let g:EasyMotion_leader_key = ';'
 " zM: fold everything
 " zr: unfold one level
 " zR: unfold everything
-
-" Plugin: vim-slime
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-" let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
-let g:slime_no_mappings = 1
-xmap <leader>z <Plug>SlimeRegionSend
-nmap <leader>z <Plug>SlimeMotionSend
-nmap <leader>zz <Plug>SlimeLineSend
-nmap <leader>g :SlimeSend1 run -i <c-r>=expand('%:t')<CR><CR>
-
 
 " Plugin: Align
 " Select in visual mode (shift )
@@ -45,39 +28,10 @@ nmap <leader>g :SlimeSend1 run -i <c-r>=expand('%:t')<CR><CR>
 " Plugin: YankRing
 " ----------------
 " After a paste, press ctrl-p to cycle through last pastes
-"let g:yankring_history_dir = '~/.vim/temp'
-"let g:yankring_clipboard_monitor = 1
-"let g:yankring_zap_keys = 'f F t T / ?'
+let g:yankring_history_dir = '~/.vim/temp'
+let g:yankring_clipboard_monitor = 1
+let g:yankring_zap_keys = 'f F t T / ?'
 " Also allows pasting between windows
-" Quick yanking to the end of the line
-"nnoremap Y y$
-
-" Yank/paste to the OS clipboard with ,y and ,p
-nnoremap Y "+y
-nnoremap P "+p
-"nnoremap <leader>P "+P
-
-" YankRing stuff
-"nnoremap <leader>r :YRShow<CR>
-
-" Search for things with slashes
-
-""-----=-------=-------=-------=-------=-------=-------=-------= 
-" multi line search selection literal (vi6.2 ok) :help c_<C-R> 
-vmap * y/\V<C-R><C-R>=substitute(escape(@",'\/'),'\n','\ 
-\n','g')<cr><cr> 
-"      ||| |         |                  |   |     |    |     +flag 
-" g=all 
-"      ||| |         |                  |   |     |    +regex=<cr> 
-"      ||| |         |                  |   |     +<cr> 
-"      ||| |         |                  |   +escape / 
-"      ||| |         |                  +contents of register 
-"      ||| |         +expression register 
-"      ||| +insert contents of expression register = LITERALLY 
-"      ||+"very nomagic", only \ is magic 
-"      |+search 
-"      +yank selected text into register " 
-""-----=-------=-------=-------=-------=-------=-------=-------= 
 
 " Plugin: MRU
 " -----------
@@ -98,11 +52,11 @@ nmap <leader>f :MRU<CR>
 " :Gstatus
 " git status
 nmap <leader>gs :Gstatus<cr>
-	" Press "Enter" to open the file in the window below
-	" Then run Gdiff
-	" Then use "-" to stage it/remove it
-	" Press "p" to add parts of a file
-	" Press "shift-c" to commit
+    " Press "Enter" to open the file in the window below
+    " Then run Gdiff
+    " Then use "-" to stage it/remove it
+    " Press "p" to add parts of a file
+    " Press "shift-c" to commit
 
 " Old Versions:
 " :Glog
@@ -187,7 +141,6 @@ nmap <leader>gl :Glog<cr>
 " right: merge branch (what we tried to merge in)
 nmap <leader>gd :Gdiff<cr>
 
-autocmd BufReadPost fugitive://* set bufhidden=delete
 
 
 " Plugin: NerdCommenter
@@ -368,7 +321,7 @@ nmap <leader>k <C-W>k
 nmap <leader>c :setlocal foldmethod=syntax<CR>
 
 " ,w writes
-" nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :w<CR>
 " ,q quits
 nnoremap <Leader>q :q<CR>
 " ,x writes and quits
@@ -386,7 +339,7 @@ noremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " In command mode, enter inserts a newline,
 " Shift-enter inserts above
-nmap <S-Enter> O<ESC>
+"nmap <S-Enter> O<ESC>
 nmap <Enter> o<ESC>
 
 " ,v reselects just pasted text
@@ -466,8 +419,8 @@ set noswapfile
 " Set up persistent undo
 " Only works in 7.3
 try
-	set undodir=~/.vim/undodir
-	set undofile
+    set undodir=~/.vim/undodir
+    set undofile
 catch
 endtry
 
@@ -505,14 +458,13 @@ set history=1000
 
 " Setup copy/paste
 " Mirror vim clipboard (eg. yank), with system clipboard
-" set clipboard=unnamedplus
+"set clipboard=unnamed
 "source $VIMRUNTIME/mswin.vim
-set clipboard=autoselect,exclude:.* 
 "behave mswin
 
 " Allow for mouse movement in vim
 if has('mouse')
-	set mouse=a 
+    set mouse=a 
 endif
 
 " Long lines
@@ -524,8 +476,8 @@ set formatoptions=tcq
 " Selecting then "gq" will wrap selection
 
 " A tab is 2 spaces
-set tabstop=2 
-set shiftwidth=2
+set tabstop=4 
+set shiftwidth=4
 set expandtab
 " type :retab to expand all of these
 " type ctrl-v tab to get a real tab (,l to show it)
@@ -533,30 +485,216 @@ set expandtab
 " Colors
 " If using an 8 bit terminal colors will not work, need to
 " reset the color scheme
-"let t_Co=256
-"let t_Co=16
-"let g:solarized_termcolors=256
-"colorscheme molokai
-"colorscheme solarized
-"set background=light
+let &t_Co=256
 
 if has('statusline')
-	set laststatus=2
+    set laststatus=2
 
-	" Broken down into easily includeable segments
-	set statusline=%<%f\   " Filename
-	set statusline+=%w%h%m%r " Options
-	set statusline+=%{fugitive#statusline()} "  Git Hotness
-	"set statusline+=\ [%{&ff}/%Y]            " filetype
-	set statusline+=\ [%{getcwd()}]          " current dir
-	"set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
-	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    " Broken down into easily includeable segments
+    set statusline=%<%f\   " Filename
+    set statusline+=%w%h%m%r " Options
+    "set statusline+=\ [%{&ff}/%Y]            " filetype
+    set statusline+=\ [%{getcwd()}]          " current dir
+    "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 
-" font
-" set guifont=ProggyCleanTT\ 12
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+
+
+""added by behzad boroujerdian
+:fixdel
+":set backspace=2 
+
+"mapping the arrow keys
+:imap <C-h> <Left>
+:imap <C-j> <Down>
+:imap <C-k> <Up>
+:imap <C-l> <Right>
+"if you activate set paste, then the auto indenting doesn't work properly
+":set paste
+
+",i makes an indent
+nnoremap <leader>i i<space>
+":set t_kb=CTRL-i
+"""""""""""""""""""""""""""""""""""""""""""""""my changes"
+"set shellcmdflag=-ic
+"location of the progress files. These files contain information about 2 main
+"things: 1.progress: keep track of the progress  that I have been making on
+"ceratin issues. 2.to do list. what needs to be done
+" size of a hard tabstop
+
+"prog1: info regarding work life
+nmap prog1 :vsplit /nfs/pdx/home/bborouje/monitoring/progress_work.txt
+"prog2: info regarding home,outside life (other things)
+nmap prog2 :vsplit /nfs/pdx/home/bborouje/monitoring/progress_others.txt
+
+",t makes a tab both in normal and visual mode
+"nnoremap <leader>t i<tab><ESC>j^
+nnoremap <C-o> <ESC> 
+
+
+"ctrl+i instead of <ESC>
+"inoremap <C-i> <ESC>
+
+"copy to the terminal buffer
+"copy a line
+nnoremap <C-c> v$h"*y
+"copy a word 
+"nnoremap <C-c><C-w> v$h"*w
+"copy in visual mode 
+vnoremap <C-c> "*y
+
+
+"typing space in normal mode will add space the line in C
+:nnoremap space ^v$:s/^/  <Enter>j^
+:vnoremap space :s/^/  /<Enter>j^
+
+
+
+"typing pyco in normal mode will comment the line in python
+"typing cco in normal mode will comment the line in C
+:nnoremap pyco ^v$:s/^/#<Enter>j^
+:nnoremap cco ^v$:s/^/\/\/<Enter>j^
+
+
+"uncommenting"
+:nnoremap ucco ^xx/<Enter>j^
+:nnoremap upyco ^x/<Enter>j^
+"typing pyco in visual mode will comment the line in python
+"typing cco in visual mode will comment the line in C
+:vnoremap pyco :s/^/#<Enter>j^
+:vnoremap cco :s/^/\/\/<Enter>j^
+
+:vnoremap upyco :s/^.//<Enter>j^
+:vnoremap ucco :s/^..//<Enter>j^
+
+"pulling up .bashrc"
+:nnoremap bashrc :vsplit /nfs/pdx/home/bborouje/.bashrc <Enter>
+
+"pulling up .vimrc"
+:nnoremap vimrc :vsplit /nfs/pdx/home/bborouje/.vimrc <Enter>
+
+"description for a function or class in c"
+:nnoremap desc ^i/*****************************************<Enter>function_name: <Enter>description: <Enter>Usage: <Enter>*****************************************/<Esc>j^
+
+"description for a function or class in python"
+:nnoremap desp ^i########################################<Enter>#function_name: <Enter>description: <Enter>#Usage: <Enter>#########################################<Esc>j^
+
+"writing tests"
+"in C"
+:nnoremap testc ^i//*******testnumber: <Enter>*******test_description: <Esc>j^
+"in pythong"
+:nnoremap testpy ^i#*******testnumber: <Enter>#*******test_description: <Esc>j^
+
+"drawing a line"
+"   drawing a line in C"
+:nnoremap cline ^i//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------<ESC>j^
+"   drawing a line in python"
+:nnoremap pyline ^i#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<ESC>j^
+
+
+
+
+"------------python helpers"
+"used to explain a function"
+"used before the function header"
+:nnoremap modhead ^i#-----------------------------------------------------------------------------------------------------------------------------<Enter>#-----------------------------------------------------------------------------------------------------------------------------<Enter>#---------module_name:::<Enter>#---------functionlity:::<Enter>#-----------------------------------------------------------------------------------------------------------------------------<Enter>#-----------------------------------------------------------------------------------------------------------------------------<ESC>kkk<S-A>
+
+"guides: for further explanations
+"no tab"
+:nnoremap guide ^i#---------guide::: <ESC><S-A>
+"one tab"
+:nnoremap tguide ^i<S-tab>#---------guide::: <ESC><S-A>
+"two tabs"
+:nnoremap ttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
+
+
+
+
+
+"notes: for further explanations
+"no tab"
+:nnoremap note ^i#---------note::: <ESC><S-A>
+"one tab"
+:nnoremap tnote ^i<S-tab>#---------note::: <ESC><S-A>
+"two tabs"
+:nnoremap ttnote ^i<S-tab><S-tab>#---------note::: <ESC><S-A>
+
+"examples: for further explanations
+"no tab"
+:nnoremap example ^i#---------example::: <ESC><S-A>
+"one tab"
+:nnoremap texample ^i<S-tab>#---------example::: <ESC><S-A>
+"two tabs"
+:nnoremap ttexample ^i<S-tab><S-tab>#---------example::: <ESC><S-A>
+
+"stepss: for further explanations
+"no tab"
+:nnoremap steps ^i#---------steps::: <ESC><S-A>
+"one tab"
+:nnoremap tsteps ^i<S-tab>#---------steps::: <ESC><S-A>
+"two tabs"
+:nnoremap ttsteps ^i<S-tab>#---------steps::: <ESC><S-A>
+
+"warnings: for further explanations
+"no tab"
+:nnoremap warn ^i#---------warnings::: <ESC><S-A>
+"one tab"
+:nnoremap twarn ^i<S-tab>#---------warnings::: <ESC><S-A>
+"two tabs"
+:nnoremap ttwarn ^i<S-tab>#---------warnings::: <ESC><S-A>
+
+"questions: for further explanations
+"no tab"
+:nnoremap question ^i#---------question::: <ESC><S-A>
+"one tab"
+:nnoremap tquestion ^i<S-tab>#---------question::: <ESC><S-A>
+"two tabs"
+:nnoremap ttquestion ^i<S-tab><S-tab>#---------question::: <ESC><S-A>
+
+
+
+"tabularize"
+:vnoremap tab= :Tab/=/<Enter>
+
+
+"lesson"
+"to take note of the lessons learned within the file lesson a line in C"
+:nnoremap clesson ^i//***lesson: 
+"to take note of the lessons learned in the lessons folder 
+nnoremap clessons <C-w><C-v><C-l>:e ~/programming/C_programming/lessons/clessons/clessons<cr>
+
+"   leeson a line in python"
+:nnoremap pylesson ^i#***lesson: 
+
+"to take notes of the lessons that I learn about vim
+nnoremap vlessons <C-w><C-v><C-l>:e ~/vimrc/lessons<cr>
+
+
+"spelling corrections"
+iab teh the
+iab prinft printf
+iab coutner counter
+
+"moving out of insert mode using control i
+imap <C-i> <ESC>
+",t makes a tab both in normal and visual mode
+vnoremap <leader>t :s/^/<tab><Enter>j^
+":iunmap <Tab>-
+
+
+"getting rid of the highlights after a search or replacement
+"nnoremap <esc> :noh<return><esc>
+nnoremap noh :noh<cr>
+
+
+""" end of addition by behzad boroujerdian
+
+
+
+
 
 " Nice scrolling if line wrap
 noremap j gj
@@ -565,11 +703,3 @@ map \ss :ScreenShell bash<CR>
 map \s :ScreenSend<CR> 
 "let g:ScreenShellGnuScreenVerticalSupport = 'native'
 "let g:ScreenImpl = 'Tmux'
-"
-"
-" Search for things with slashes
-command! -nargs=1 Ss let @/ = <q-args>
-" v to select, then y, then Ctrl-R 0 to paste
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
-
-au BufRead,BufNewFile *.sp.py   setfiletype hspice
