@@ -695,8 +695,8 @@ iab coutner counter
 
 "moving out of insert mode using control i
 imap <C-i> <ESC>
-",t makes a tab both in normal and visual mode
-vnoremap <leader>t :s/^/<tab><Enter>j^
+",t makes a tab both in normal and visual mode (not working)
+"vnoremap <leader>t :s/^/<tab><Enter>j^
 ":iunmap <Tab>-
 
 
@@ -704,6 +704,11 @@ vnoremap <leader>t :s/^/<tab><Enter>j^
 "nnoremap <esc> :noh<return><esc>
 nnoremap noh :noh<cr>
 
+"selecting a block
+nnoremap # v% 
+
+"trying to indenet a block in the following line but not working
+"nnoremap 1t v% :s/^/^I
 
 """ end of addition by behzad boroujerdian
 
