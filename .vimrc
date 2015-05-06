@@ -1,4 +1,3 @@
-
 filetype off
 filetype plugin indent on
 
@@ -611,6 +610,22 @@ vnoremap <C-c> "*y
 :nnoremap ttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
 
 
+"------------c helpers"
+"used to explain a function"
+"used before the function header"
+:nnoremap cmodhead ^i//-----------------------------------------------------------------------------------------------------------------------------<Enter>//-----------------------------------------------------------------------------------------------------------------------------<Enter>//---------module_name:::<Enter>//---------functionlity:::<Enter>//-----------------------------------------------------------------------------------------------------------------------------<Enter>//-----------------------------------------------------------------------------------------------------------------------------<ESC>kkk<S-A>
+
+"guides: for further explanations
+"no tab"
+:nnoremap cguide ^i//---------guide::: <ESC><S-A>
+"one tab"
+:nnoremap ctguide ^i<S-tab>//---------guide::: <ESC><S-A>
+"two tabs"
+:nnoremap cttguide ^i<S-tab><S-tab>//---------guide::: <ESC><S-A>
+
+
+
+
 
 
 
@@ -697,9 +712,15 @@ nnoremap noh :noh<cr>
 
 
 " Nice scrolling if line wrap
+"jumping between curly braces and"
+noremap # v%  
 noremap j gj
 noremap k gk
 map \ss :ScreenShell bash<CR>
 map \s :ScreenSend<CR> 
 "let g:ScreenShellGnuScreenVerticalSupport = 'native'
 "let g:ScreenImpl = 'Tmux'
+"
+"
+"-----------------------------------------------------------------------------------------------------------------------some NOTES
+"change the tabs equivalent of spaces  :set tabstop=4
