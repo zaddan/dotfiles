@@ -623,6 +623,12 @@ vnoremap <C-c> "*y
 "two tabs"
 :nnoremap cttguide ^i<S-tab><S-tab>//---------guide::: <ESC><S-A>
 
+:nnoremap pyguide ^i#---------guide::: <ESC><S-A>
+"one tab"
+:nnoremap pytguide ^i<S-tab>#---------guide::: <ESC><S-A>
+"two tabs"
+:nnoremap pyttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
+
 
 
 
