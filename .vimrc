@@ -559,15 +559,15 @@ vnoremap <C-c> "*y
 
 
 "uncommenting"
-:nnoremap ucco ^xx/<Enter>j^
-:nnoremap upyco ^x/<Enter>j^
+:nnoremap qcco ^xx/<Enter>j^
+:nnoremap qpyco ^x/<Enter>j^
 "typing pyco in visual mode will comment the line in python
 "typing cco in visual mode will comment the line in C
 :vnoremap pyco :s/^/#<Enter>j^
 :vnoremap cco :s/^/\/\/<Enter>j^
 
-:vnoremap upyco :s/^.//<Enter>j^
-:vnoremap ucco :s/^..//<Enter>j^
+:vnoremap qpyco :s/^.//<Enter>j^
+:vnoremap qcco :s/^..//<Enter>j^
 
 "pulling up .bashrc"
 :nnoremap bashrc :vsplit /nfs/pdx/home/bborouje/.bashrc <Enter>
