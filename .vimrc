@@ -569,6 +569,15 @@ vnoremap <C-c> "*y
 :vnoremap qpyco :s/^.//<Enter>j^
 :vnoremap qcco :s/^..//<Enter>j^
 
+
+"tabing"
+:vnoremap tb :s/^/  <Enter>j^ 
+:vnoremap ttb :s/^/         <Enter>j^
+:vnoremap tttb :s/^/            <Enter>j^
+
+
+
+
 "pulling up .bashrc"
 :nnoremap bashrc :vsplit /nfs/pdx/home/bborouje/.bashrc <Enter>
 
@@ -609,7 +618,7 @@ vnoremap <C-c> "*y
 "two tabs"
 :nnoremap ttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
 
-
+:nnoremap doneguide ^i#---------------- <ESC><S-A>
 "------------c helpers"
 "used to explain a function"
 "used before the function header"
