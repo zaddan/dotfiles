@@ -503,6 +503,8 @@ endif
 
 
 ""added by behzad boroujerdian
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/ 
+
 :fixdel
 ":set backspace=2 
 
@@ -579,10 +581,10 @@ vnoremap <C-c> "*y
 
 
 "pulling up .bashrc"
-:nnoremap bashrc :vsplit /nfs/pdx/home/bborouje/.bashrc <Enter>
+:nnoremap bashrc :vsplit ~/.bashrc
 
 "pulling up .vimrc"
-:nnoremap vimrc :vsplit /nfs/pdx/home/bborouje/.vimrc <Enter>
+:nnoremap vimrc :vsplit ~/.vimrc <Enter>
 
 "description for a function or class in c"
 :nnoremap desc ^i/*****************************************<Enter>function_name: <Enter>description: <Enter>Usage: <Enter>*****************************************/<Esc>j^
@@ -618,7 +620,13 @@ vnoremap <C-c> "*y
 "two tabs"
 :nnoremap ttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
 
-:nnoremap doneguide ^i#---------------- <ESC><S-A>
+:nnoremap gguide ^i#----------------- <ESC><S-A>"
+:nnoremap tgguide ^i<S-tab>#---------------- <ESC><S-A>
+"two tabs"
+:nnoremap ttgguide ^i<S-tab><S-tab>#---------------- <ESC><S-A>
+
+
+
 "------------c helpers"
 "used to explain a function"
 "used before the function header"
