@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
+source ~/.local/
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=9000
+HISTFILESIZE=9000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -126,3 +126,43 @@ reset=$(tput sgr0)
 
 PS1=':\[$green\]\w\[$reset\]\$ '
 #PS1='\[$grey\]\u\[$reset\]@\[$green\]\h\[$reset\]:\[$blue\]\w\[$reset\]\$ '
+
+
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+if [ -f $HOME/../Modules/init/bash ]; then
+    . $HOME/../Modules/init/bash
+    module load 
+fi
+
+# behzad stuff
+#bindkey -v
+#set -o vi
+# ---- the following two lines are necessary for installing pycallgraph
+PATH="$HOME/.local/bin:$PATH"
+echo PATH="$HOME/.local/bin:$PATH" > $HOME/.profile
+export PYTHONPATH="${PYTHONPATH}:/home/polaris/behzad/python_collection/necessary/"
+alias genpycal="$HOME/python_collection/necessary/gen_pycallgraph_excluding_libs.py"
+alias cdb="$HOME/python_collection/necessary/complete_create_db.py"
+alias termtitle="$HOME/unix_collection/necessary/termtitle $1"
+## ---- the following colors the error 
+color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
+
+
+#exec 9>&2
+#exec 8> >(
+    #while IFS='' read -r line || [ -n "$line" ]; do
+       #echo -e "\033[31m${line}\033[0m"
+    #done
+#)
+#function undirect(){ exec 2>&9; }
+#function redirect(){ exec 2>&8; }
+#trap "redirect;" DEBUG
+#PROMPT_COMMAND='undirect;'
+

@@ -1,9 +1,49 @@
-filetype off
+filetype on 
 filetype plugin indent on
+""""""""""""""""""""""""""
+"how to"
+""""""""""""""""""""""""""
+"learning how to map"
+":nmap - Display normal mode maps
+":imap - Display insert mode maps
+":vmap - Display visual and select mode maps
+":smap - Display select mode maps
+":xmap - Display visual mode maps
+":cmap - Display command-line mode maps
+":omap - Display operator pending mode maps"
+"example:
+":imap jj <Esc>
 
-" Change the Leader Key To Something Easier
-let mapleader=","
 
+"behzad stuff
+
+"plugins
+
+"Pathogen Plugin
+execute pathogen#infect()
+call pathogen#helptags()
+"generate helptags for everything in ‘runtimepath’
+
+"syntastic Plugin
+"inorder to open and close the error window use :lopen and :lclose
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0 "if 1, the error window always there
+let g:syntastic_check_on_wq = 0"
+let g:syntastic_mode_map = {
+        \ "mode": "passive",
+        \ "active_filetypes": ["ruby", "php"],
+        \ "passive_filetypes": [""] }
+
+
+"others tuff
+"folding stuff
+"set foldmethod=indent
+"set foldlevel=3
+"set foldclose=all
 " Folding
 " zf: fold selection
 " zo: open fold
@@ -13,6 +53,29 @@ let mapleader=","
 " zM: fold everything
 " zr: unfold one level
 " zR: unfold everything
+
+"setting up the line number 
+:set number
+
+"set wrap
+"setting the tw and wm
+:set tw=200
+":set wm=2
+"set formatoptions=qrn1
+set formatoptions=tcqrj
+
+
+" to draw a line in 80 character"
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(400,999),",")
+let &co=100 + &foldcolumn + (&number || &relativenumber ? &numberwidth : 0)
+
+nnoremap da d$ 
+
+"
+"end of behzad stuff
+" Change the  Key To Something Easier
+let mapleader=","
 
 " Plugin: Align
 " Select in visual mode (shift )
@@ -213,7 +276,7 @@ let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 nmap <Leader>d :NERDTreeToggle<CR>
 
 
-" Leader shortcuts
+"  shortcuts
 " ----------------
 
 " ctrl-n does autocompletion
@@ -226,12 +289,12 @@ autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc
 
 " Vertical split then hop to new buffer
 " ,v to create a new vertical split
-noremap <Leader>v :vsplit<CR>
+:nnoremap <Leader>v :vsplit 
 
 " Horizontal split
 " ,h to create a new horizontal split
-noremap <Leader>h :split<CR>
-
+":nnoremap <Leader>h :split 
+:nnoremap <leader>f :split 
 " ,, moves between buffers
 nmap <Leader>, <C-W>W
 
@@ -324,10 +387,17 @@ nnoremap <Leader>w :w<CR>
 " ,q quits
 nnoremap <Leader>q :q<CR>
 " ,x writes and quits
+:nnoremap <leader>z :q!<Enter>
+:nnoremap <leader>q :wq!<Enter>
+:nnoremap <leader>w :w<Enter>
+:nnoremap <leader><leader> <C-W><C-W>
+" ,z just quit without writing
+
+
 nnoremap <Leader>x :wq!<CR>
 
 " ,p toggles paste mode to turn off weird wrapping/commenting
-"set pastetoggle=<leader>p
+set pastetoggle=<leader>p
 nmap <leader>p :set invpaste paste?<CR>
 
 " Run make with ,m
@@ -363,7 +433,7 @@ syntax on
 "
 "nnoremap / /\v
 "vnoremap / /\v
-cnoremap %s/ %s/\v
+"cnoremap %s/ %s/\v
 
 " Turn on auto indentation
 set autoindent
@@ -471,7 +541,7 @@ endif
 "set wm=2
 "set textwidth=79
 "set formatoptions=qrn1
-set formatoptions=tcq
+"set formatoptions=tcqrj
 " Selecting then "gq" will wrap selection
 
 " A tab is 2 spaces
@@ -503,7 +573,47 @@ endif
 
 
 ""added by behzad boroujerdian
-:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/ 
+""----------------------------
+""----------------------------
+
+:nnoremap k gk
+:nnoremap j gj
+
+"for adding a print statement in python
+:nnoremap pw lbywoprint "<Esc>p<S-A>: " + str(<Esc>p<S-A>)<Esc>j0
+:nnoremap aa 00
+
+""remappnig the escape
+:imap jj <Esc>
+:cmap jj <Esc><Esc>
+:smap jj <Esc>
+:vmap ii <Esc>
+onoremap  jj <Esc>
+""-----every thing necessary for search and replace---
+:nnoremap <Leader>s :%s/
+""search and replace with auto completion
+:nnoremap 's :%s/<C-f>i
+
+""search and completion for the word under the cursor
+:nnoremap <Leader>ss :%s/\<<C-r><C-w>\>/
+
+""for abolish plug-in
+:nnoremap <Leader>S :%S/
+
+
+:vnoremap <Leader>s :s/
+
+""search and replace with auto completion
+:vnoremap 's :s/<C-f>i
+
+""search and completion for the word under the cursor
+:vnoremap <Leader>ss :s/\<<C-r><C-w>\>/
+
+""for abolish plug-in
+:vnoremap <Leader>S :S/
+""----------------------------
+""----------------------------
+
 
 :fixdel
 ":set backspace=2 
@@ -553,6 +663,8 @@ vnoremap <C-c> "*y
 :vnoremap space :s/^/  /<Enter>j^
 
 
+":nnoremap mls ^i"<Esc><S-A>" 
+":nnoremap ms <Esc>bi"<Esc>ei" 
 
 "typing pyco in normal mode will comment the line in python
 "typing cco in normal mode will comment the line in C
@@ -581,11 +693,16 @@ vnoremap <C-c> "*y
 
 
 "pulling up .bashrc"
-:nnoremap bashrc :vsplit ~/.bashrc
+""":nnoremap bashrc :vsplit ~/.bashrc
 
 "pulling up .vimrc"
 :nnoremap vimrc :vsplit ~/.vimrc <Enter>
 
+:nnoremap viml :vsplit ~/vim_collection/learningVim <Enter>
+
+:nnoremap viml :vsplit ~/vim_collection/learningVim <Enter>
+
+"
 "description for a function or class in c"
 :nnoremap desc ^i/*****************************************<Enter>function_name: <Enter>description: <Enter>Usage: <Enter>*****************************************/<Esc>j^
 
@@ -614,16 +731,25 @@ vnoremap <C-c> "*y
 
 "guides: for further explanations
 "no tab"
-:nnoremap guide ^i#---------guide::: <ESC><S-A>
+"":nnoremap guide ^00d$i# ----::: <ESC><S-A>
+":nnoremap guide ^i<Enter><ESC>k0i#---------guide::: <ESC><S-A>
 "one tab"
-:nnoremap tguide ^i<S-tab>#---------guide::: <ESC><S-A>
-"two tabs"
-:nnoremap ttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
+":nnoremap tguide ^00d$i<S-tab>#---------guide::: <ESC><S-A>
+""two tabs"
+":nnoremap ttguide ^00d$i<S-tab><S-tab>#---------guide::: <ESC><S-A>
+"
+"
+":nnoremap tgguide ^00d$i<S-tab>#---------------- <ESC><S-A>
+""two tabs"
+":nnoremap ttgguide ^00d$i<S-tab><S-tab>#---------------- <ESC><S-A>
+"
+":nnoremap fguide ^00d$i#----------------- <Enter>#---------guide::: <Enter>#---
+"-------------- <ESC>k<S-A>
+:nnoremap tfguide ^00d$i<S-tab>#----------------- <Enter>#---------guide::: <Enter>#----------------- <ESC>k<S-A>
 
-:nnoremap gguide ^i#----------------- <ESC><S-A>"
-:nnoremap tgguide ^i<S-tab>#---------------- <ESC><S-A>
-"two tabs"
-:nnoremap ttgguide ^i<S-tab><S-tab>#---------------- <ESC><S-A>
+:nnoremap guide <S-o># ---- <ESC><S-A>
+:nnoremap wg i<Enter># ---- <ESC><S-A>
+:nnoremap fguide <S-o># ----<Enter># ----<Enter>  # ----<ESC> <S-A>
 
 
 
@@ -654,7 +780,6 @@ vnoremap <C-c> "*y
 
 "notes: for further explanations
 "no tab"
-:nnoremap note ^i#---------note::: <ESC><S-A>
 "one tab"
 :nnoremap tnote ^i<S-tab>#---------note::: <ESC><S-A>
 "two tabs"
@@ -662,11 +787,11 @@ vnoremap <C-c> "*y
 
 "examples: for further explanations
 "no tab"
-:nnoremap example ^i#---------example::: <ESC><S-A>
+""":nnoremap example ^i#---------example::: <ESC><S-A>
 "one tab"
-:nnoremap texample ^i<S-tab>#---------example::: <ESC><S-A>
+""":nnoremap texample ^i<S-tab>#---------example::: <ESC><S-A>
 "two tabs"
-:nnoremap ttexample ^i<S-tab><S-tab>#---------example::: <ESC><S-A>
+""":nnoremap ttexample ^i<S-tab><S-tab>#---------example::: <ESC><S-A>
 
 "stepss: for further explanations
 "no tab"
@@ -716,8 +841,7 @@ iab teh the
 iab prinft printf
 iab coutner counter
 
-"moving out of insert mode using control i
-imap <C-i> <ESC>
+
 ",t makes a tab both in normal and visual mode (not working)
 "vnoremap <leader>t :s/^/<tab><Enter>j^
 ":iunmap <Tab>-
@@ -725,10 +849,12 @@ imap <C-i> <ESC>
 
 "getting rid of the highlights after a search or replacement
 "nnoremap <esc> :noh<return><esc>
-nnoremap noh :noh<cr>
+nnoremap oh :noh<cr>
 
 "selecting a block
 nnoremap # v% 
+
+
 
 "trying to indenet a block in the following line but not working
 "nnoremap 1t v% :s/^/^I
@@ -736,16 +862,19 @@ nnoremap # v%
 """ end of addition by behzad boroujerdian
 
 
-
-
-
 " Nice scrolling if line wrap
 "jumping between curly braces and"
-noremap # v%  
-noremap j gj
-noremap k gk
-map \ss :ScreenShell bash<CR>
-map \s :ScreenSend<CR> 
+"noremap # v%  
+"noremap j gj
+"noremap k gk
+"map \ss :ScreenShell bash<CR>
+"map \s :ScreenSend<CR> 
+
+
+
+"au FileType * setlocal formatoptions-=c formatoptions-=o
+
+
 "let g:ScreenShellGnuScreenVerticalSupport = 'native'
 "let g:ScreenImpl = 'Tmux'
 "
