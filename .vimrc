@@ -16,9 +16,19 @@ filetype plugin indent on
 
 
 "behzad stuff
-
+"map <SPACE> <Plug>(easymotion-s2)
+"let g:RangeMacro_Mapping = '<Leader>@'
+"l is mapped for repeating a macro
+let g:RangeMacro_Mapping = 'l' 
+nmap s <Plug>(easymotion-s2)
 "plugins
-
+"function ER()
+    "let @/ = "thisregisterissettothisvaluesforevertoavoidsearchreplaceanomalisinthecaseofjj"
+"endfunction
+:nnoremap <S-w> w 
+:nnoremap w <S-w>
+:nnoremap b <S-b>
+:nnoremap <S-b> b 
 "Pathogen Plugin
 execute pathogen#infect()
 call pathogen#helptags()
@@ -337,7 +347,7 @@ nmap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nmap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " ,s opens the snippet directory
-nnoremap <leader>s <C-w><C-v><C-w><C-w><C-l>:e ~/dotfiles/.vim/bundle/snipMate/snippets/<cr>
+"nnoremap <leader>s <C-w><C-v><C-w><C-w><C-l>:e ~/dotfiles/.vim/bundle/snipMate/snippets/<cr>
 
 " ctrl-p inserts the path of the currently edited file into a command
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -576,6 +586,7 @@ endif
 ""----------------------------
 ""----------------------------
 
+
 :nnoremap k gk
 :nnoremap j gj
 
@@ -584,31 +595,25 @@ endif
 :nnoremap aa 00
 
 ""remappnig the escape
-:imap jj <Esc>
-:cmap jj <Esc><Esc>
-:smap jj <Esc>
-:vmap ii <Esc>
-onoremap  jj <Esc>
+:imap ij <Esc>
+:cmap ij <Esc><Esc>
+:smap ij <Esc>
+:vmap ij <Esc>
+:onoremap  ij <Esc>
 ""-----every thing necessary for search and replace---
 :nnoremap <Leader>s :%s/
 ""search and replace with auto completion
-:nnoremap 's :%s/<C-f>i
-
+":nnoremap 's :%s/<C-f>i
 ""search and completion for the word under the cursor
-:nnoremap <Leader>ss :%s/\<<C-r><C-w>\>/
-
+:nnoremap <Leader><Leader>s :%s/\<<C-r><C-w>\>/
 ""for abolish plug-in
 :nnoremap <Leader>S :%S/
 
-
 :vnoremap <Leader>s :s/
-
 ""search and replace with auto completion
 :vnoremap 's :s/<C-f>i
-
 ""search and completion for the word under the cursor
 :vnoremap <Leader>ss :s/\<<C-r><C-w>\>/
-
 ""for abolish plug-in
 :vnoremap <Leader>S :S/
 ""----------------------------
@@ -668,19 +673,19 @@ vnoremap <C-c> "*y
 
 "typing pyco in normal mode will comment the line in python
 "typing cco in normal mode will comment the line in C
-:nnoremap pyco ^v$:s/^/#<Enter>j^
-:nnoremap cco ^v$:s/^/\/\/<Enter>j^
+:nnoremap pyco ^v$:s/^/# <Enter>j^
+:nnoremap cco ^v$:s/^/\/\/ <Enter>j^
 
 
 "uncommenting"
 :nnoremap qcco ^xx/<Enter>j^
-:nnoremap qpyco ^x/<Enter>j^
+:nnoremap qpyco ^xx/<Enter>j^
 "typing pyco in visual mode will comment the line in python
 "typing cco in visual mode will comment the line in C
 :vnoremap pyco :s/^/#<Enter>j^
 :vnoremap cco :s/^/\/\/<Enter>j^
 
-:vnoremap qpyco :s/^.//<Enter>j^
+:vnoremap qpyco :s/^.//<Enter>:s/^/.//<Enter>j^
 :vnoremap qcco :s/^..//<Enter>j^
 
 
@@ -748,7 +753,7 @@ vnoremap <C-c> "*y
 :nnoremap tfguide ^00d$i<S-tab>#----------------- <Enter>#---------guide::: <Enter>#----------------- <ESC>k<S-A>
 
 :nnoremap guide <S-o># ---- <ESC><S-A>
-:nnoremap wg i<Enter># ---- <ESC><S-A>
+":nnoremap wg i<Enter># ---- <ESC><S-A>
 :nnoremap fguide <S-o># ----<Enter># ----<Enter>  # ----<ESC> <S-A>
 
 
@@ -803,11 +808,11 @@ vnoremap <C-c> "*y
 
 "warnings: for further explanations
 "no tab"
-:nnoremap warn ^i#---------warnings::: <ESC><S-A>
+":nnoremap warn ^i#---------warnings::: <ESC><S-A>
 "one tab"
-:nnoremap twarn ^i<S-tab>#---------warnings::: <ESC><S-A>
+":nnoremap twarn ^i<S-tab>#---------warnings::: <ESC><S-A>
 "two tabs"
-:nnoremap ttwarn ^i<S-tab>#---------warnings::: <ESC><S-A>
+":nnoremap ttwarn ^i<S-tab>#---------warnings::: <ESC><S-A>
 
 "questions: for further explanations
 "no tab"

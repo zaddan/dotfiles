@@ -151,6 +151,13 @@ export PYTHONPATH="${PYTHONPATH}:/home/polaris/behzad/python_collection/necessar
 alias genpycal="$HOME/python_collection/necessary/gen_pycallgraph_excluding_libs.py"
 alias cdb="$HOME/python_collection/necessary/complete_create_db.py"
 alias termtitle="$HOME/unix_collection/necessary/termtitle $1"
+alias pycharm="bash $HOME/Downloads/pycharm-community-4.5.3/bin/pycharm.sh"
+cpyFoo() {
+    cp $1 $1_backup
+    vim $1_backup
+}
+
+alias vimc=cpyFoo
 ## ---- the following colors the error 
 color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
 
