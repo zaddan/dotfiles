@@ -17,14 +17,18 @@ filetype plugin indent on
 
 "behzad stuff
 "map <SPACE> <Plug>(easymotion-s2)
-"let g:RangeMacro_Mapping = '<Leader>@'
-"l is mapped for repeating a macro
-let g:RangeMacro_Mapping = 'l' 
+"the followig plug in didn't work proplerly, so I uninstalled it"
+"let g:RangeMacro_Mapping = '<Leader>@' 
+
+"easy motion
 nmap s <Plug>(easymotion-s2)
+"end of easy motion
 "plugins
 "function ER()
     "let @/ = "thisregisterissettothisvaluesforevertoavoidsearchreplaceanomalisinthecaseofjj"
 "endfunction
+"the following is used for repeating commands
+
 :nnoremap <S-w> w 
 :nnoremap w <S-w>
 :nnoremap b <S-b>
@@ -355,6 +359,7 @@ cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 " Use tab to look between bracket pairs
 nnoremap <tab> %
 vnoremap <tab> %
+vnoremap <Leader>m :normal @
 
 " Tab configuration
 " ,tn makes a new tab
@@ -411,8 +416,7 @@ set pastetoggle=<leader>p
 nmap <leader>p :set invpaste paste?<CR>
 
 " Run make with ,m
-nmap <leader>m :!make<CR><CR>
-
+"nmap <leader>m :!make<CR><CR>
 " ,W clears whitespacewn
 noremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -592,7 +596,7 @@ endif
 
 "for adding a print statement in python
 :nnoremap pw lbywoprint "<Esc>p<S-A>: " + str(<Esc>p<S-A>)<Esc>j0
-:nnoremap aa 00
+:nnoremap aa ^
 
 ""remappnig the escape
 :imap ij <Esc>
@@ -605,7 +609,7 @@ endif
 ""search and replace with auto completion
 ":nnoremap 's :%s/<C-f>i
 ""search and completion for the word under the cursor
-:nnoremap <Leader><Leader>s :%s/\<<C-r><C-w>\>/
+:nnoremap <Leader>ss :%s/\<<C-r><C-w>\>/
 ""for abolish plug-in
 :nnoremap <Leader>S :%S/
 
@@ -618,8 +622,6 @@ endif
 :vnoremap <Leader>S :S/
 ""----------------------------
 ""----------------------------
-
-
 :fixdel
 ":set backspace=2 
 
