@@ -29,10 +29,10 @@ nmap s <Plug>(easymotion-s2)
 "endfunction
 "the following is used for repeating commands
 
-:nnoremap <S-w> w 
-:nnoremap w <S-w>
-:nnoremap b <S-b>
-:nnoremap <S-b> b 
+":nnoremap <S-w> w 
+":nnoremap w <S-w>
+":nnoremap b <S-b>
+":nnoremap <S-b> b 
 "Pathogen Plugin
 execute pathogen#infect()
 call pathogen#helptags()
