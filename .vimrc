@@ -1,5 +1,7 @@
 filetype on 
 filetype plugin indent on
+
+
 """"""""""""""""""""""""""
 "how to"
 """"""""""""""""""""""""""
@@ -21,7 +23,7 @@ filetype plugin indent on
 "let g:RangeMacro_Mapping = '<Leader>@' 
 
 "easy motion
-nmap s <Plug>(easymotion-s2)
+nmap rr <Plug>(easymotion-s2)
 "end of easy motion
 "plugins
 "function ER()
@@ -82,7 +84,7 @@ set formatoptions=tcqrj
 " to draw a line in 80 character"
 let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(400,999),",")
-let &co=100 + &foldcolumn + (&number || &relativenumber ? &numberwidth : 0)
+let &co=98 + &foldcolumn + (&number || &relativenumber ? &numberwidth : 0)
 
 nnoremap da d$ 
 
@@ -402,7 +404,7 @@ nnoremap <Leader>w :w<CR>
 " ,q quits
 nnoremap <Leader>q :q<CR>
 " ,x writes and quits
-:nnoremap <leader>z :q!<Enter>
+:nnoremap <leader>zz :q!<Enter>
 :nnoremap <leader>q :wq!<Enter>
 :nnoremap <leader>w :w<Enter>
 :nnoremap <leader><leader> <C-W><C-W>
@@ -597,6 +599,8 @@ endif
 "for adding a print statement in python
 :nnoremap pw lbywoprint "<Esc>p<S-A>: " + str(<Esc>p<S-A>)<Esc>j0
 :nnoremap aa ^
+":nnoremap gb ^
+:nnoremap de d$
 
 ""remappnig the escape
 :imap ij <Esc>
@@ -724,7 +728,7 @@ vnoremap <C-c> "*y
 
 "drawing a line"
 "   drawing a line in C"
-:nnoremap cline ^i//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------<ESC>j^
+:nnoremap cline ^i//-----------------------------------------------------------------<ESC>j^
 "   drawing a line in python"
 :nnoremap pyline ^i#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<ESC>j^
 
@@ -758,26 +762,37 @@ vnoremap <C-c> "*y
 ":nnoremap wg i<Enter># ---- <ESC><S-A>
 :nnoremap fguide <S-o># ----<Enter># ----<Enter>  # ----<ESC> <S-A>
 
+:nnoremap cguide <S-o>// ---- <ESC><S-A>
+":nnoremap wg i<Enter># ---- <ESC><S-A>
+:nnoremap cfguide <S-o>// ----<Enter>// ----<Enter>  // ----<ESC> <S-A>
 
+
+:nnoremap cdis ^i//**--------------------**<Enter>**--------------------**<Enter>----disclaimers:::<Enter>**--------------------**<Enter>--------------------**<ESC>kkk<S-A>
+
+:nnoremap pydis ^i#**--------------------**<Enter>#**--------------------**<Enter>#----disclaimers:::<Enter>#**--------------------**<Enter>#--------------------**<ESC>kkk<S-A>
+
+:nnoremap pytodo ^i#**--------------------**<Enter>#**--------------------**<Enter>#----todo:::<Enter>#**--------------------**<Enter>#--------------------**<ESC>kkk<S-A>
+
+"
 
 "------------c helpers"
 "used to explain a function"
 "used before the function header"
-:nnoremap cmodhead ^i//-----------------------------------------------------------------------------------------------------------------------------<Enter>//-----------------------------------------------------------------------------------------------------------------------------<Enter>//---------module_name:::<Enter>//---------functionlity:::<Enter>//-----------------------------------------------------------------------------------------------------------------------------<Enter>//-----------------------------------------------------------------------------------------------------------------------------<ESC>kkk<S-A>
+:nnoremap cmodhead ^i//----------------------------------------------------<Enter>//----------------------------------------------------<Enter>//---------module_name:::<Enter>//---------functionlity:::<Enter>//----------------------------------------------------<Enter>//----------------------------------------------------
 
 "guides: for further explanations
 "no tab"
-:nnoremap cguide ^i//---------guide::: <ESC><S-A>
-"one tab"
-:nnoremap ctguide ^i<S-tab>//---------guide::: <ESC><S-A>
-"two tabs"
-:nnoremap cttguide ^i<S-tab><S-tab>//---------guide::: <ESC><S-A>
+":nnoremap cguide ^i//---------guide::: <ESC><S-A>
+""one tab"
+":nnoremap ctguide ^i<S-tab>//---------guide::: <ESC><S-A>
+""two tabs"
+":nnoremap cttguide ^i<S-tab><S-tab>//---------guide::: <ESC><S-A>
 
-:nnoremap pyguide ^i#---------guide::: <ESC><S-A>
-"one tab"
-:nnoremap pytguide ^i<S-tab>#---------guide::: <ESC><S-A>
-"two tabs"
-:nnoremap pyttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
+":nnoremap pyguide ^i#---------guide::: <ESC><S-A>
+""one tab"
+":nnoremap pytguide ^i<S-tab>#---------guide::: <ESC><S-A>
+""two tabs"
+":nnoremap pyttguide ^i<S-tab><S-tab>#---------guide::: <ESC><S-A>
 
 
 
@@ -888,3 +903,6 @@ nnoremap # v%
 "
 "-----------------------------------------------------------------------------------------------------------------------some NOTES
 "change the tabs equivalent of spaces  :set tabstop=4
+"
+set virtualedit=onemore
+
