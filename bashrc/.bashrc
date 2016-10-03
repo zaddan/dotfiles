@@ -1,12 +1,28 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+HISTFILE=~/.bash_history
+set -o history
 source ~/.local/
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+rfc () {
+    fc -e : $1 $2
+}
+alias gb='vim ~/behzad_local/personal/habitualize'
+alias gt='vim ~/behzad_local/personal/todo.txt' 
+alias gp='vim ~/behzad_local/personal/live_better_problem'
+alias gh='vim ~/behzad_local/personal/live_better_hyp.txt'
+alias gs='vim ~/behzad_local/personal/live_better_solutions.txt'
+alias gb='vim ~/behzad_local/personal/habitualize.txt'
+alias sc='vim ~/scratch
+alias fc ='fc e : '
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -21,7 +37,7 @@ HISTFILESIZE=9000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+#shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -72,6 +88,11 @@ xterm*|rxvt*)
     ;;
 esac
 
+
+alias hs='history 20 > ~/tempo; python ~/behzad_local/usefull_stuff/misc/python_collection/necessary/history.py'
+
+
+export -f hs
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -88,6 +109,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ls='ls --color=auto -lhrt'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -145,19 +167,38 @@ fi
 #bindkey -v
 #set -o vi
 # ---- the following two lines are necessary for installing pycallgraph
-PATH="$HOME/.local/bin:$PATH"
-echo PATH="$HOME/.local/bin:$PATH" > $HOME/.profile
+PATH="$HOME/.local/bin:$PATH:/home/local/bulkhead/behzad/usr/local/parsec-3.0/bin"
+#echo PATH="$HOME/.local/bin:$PATH:$HOME/.local/lib/python2.7/site-packages" > $HOME/.profile
+export
+#PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$HOME/learning_collections/python_collection/necessary:$HOME/behzad_local/gem5-src-code/gem5-stable/src/python:$HOME/behzad_local/gem5-src-code/gem5-stable/src/python/m5:$HOME/behzad_local/gem5-src-code/gem5-stable/src/python/swig:$HOME/behzad_local/gem5-src-code/gem5-stable/src/sim/
+
+
+export
+PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$HOME/local_drive/usefull_stuff/misc/python_collection/necessary:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python/m5:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python/swig:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/sim:$HOME/local_drive/usefull_stuff/python_libs:$HOME/local_drive/usefull_stuff/misc
+
+
+
+
 export PYTHONPATH="${PYTHONPATH}:/home/polaris/behzad/python_collection/necessary/"
+export PYTHONPATH="${PYTHONPATH}:/home/polaris/behzad/apx_tool_chain/src/python_files/"
 alias genpycal="$HOME/python_collection/necessary/gen_pycallgraph_excluding_libs.py"
 alias cdb="$HOME/python_collection/necessary/complete_create_db.py"
-alias termtitle="$HOME/unix_collection/necessary/termtitle $1"
+#alias termtitle="$HOME/behzad_local/usefull_stuff/learning_collections/unix_collection/necessary/termtitle $1"
+alias journal="vim $HOME/behzad_local/journal"
+alias vimrc="vim $HOME/.vimrc"
+
+#machine spacific aliases
 alias pycharm="bash $HOME/Downloads/pycharm-community-4.5.3/bin/pycharm.sh"
+#alias mendley="cd $HOME/Downloads/mendeleydesktop-1.15.1-linux-x86_64/;./bin/mendeleydesktop&"
+
 cpyFoo() {
     cp $1 $1_backup
     vim $1_backup
-}
 
+}
 alias vimc=cpyFoo
+
+
 ## ---- the following colors the error 
 color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
 
@@ -172,4 +213,23 @@ color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
 #function redirect(){ exec 2>&8; }
 #trap "redirect;" DEBUG
 #PROMPT_COMMAND='undirect;'
+
+#gpgpu stuff
+export LD_LIBRARY_PATH=/home/local/optimus/kishore/modelling/cuda_4.0/:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=/home/local/optimus/kishore/modelling/cuda_4.0/:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/bin:$PATH  
+#export PATH=/home/local/optimus/kishore/modelling/cuda_4.0/cuda:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/bin:$PATH  
+export CUDA_INSTALL_PATH=/home/local/optimus/kishore/modelling/cuda_4.0/cuda/
+#end of gpgpu stuff 
+
+
+setterm -blength 0
+PERL_MB_OPT="--install_base \"/home/polaris/behzad/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/polaris/behzad/perl5"; export PERL_MM_OPT;
+export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/behzad_local/usefull_stuff/bin/:$PATH
+
+#virtual env
+source  ~/.local/lib/bin/activate
+
 

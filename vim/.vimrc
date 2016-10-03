@@ -1,7 +1,6 @@
 filetype on 
-filetype plugin indent on
-
-
+filetype plugin on
+filetype indent on
 """"""""""""""""""""""""""
 "how to"
 """"""""""""""""""""""""""
@@ -15,7 +14,6 @@ filetype plugin indent on
 ":omap - Display operator pending mode maps"
 "example:
 ":imap jj <Esc>
-
 
 "behzad stuff
 "map <SPACE> <Plug>(easymotion-s2)
@@ -68,7 +66,7 @@ let g:syntastic_mode_map = {
 " zm: fold one level
 " zM: fold everything
 " zr: unfold one level
-" zR: unfold everything
+" zR: unfold everythingiiiii
 
 "setting up the line number 
 :set number
@@ -84,7 +82,7 @@ set formatoptions=tcqrj
 " to draw a line in 80 character"
 let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(400,999),",")
-let &co=98 + &foldcolumn + (&number || &relativenumber ? &numberwidth : 0)
+let &co=100 + &foldcolumn + (&number || &relativenumber ? &numberwidth : 0)
 
 nnoremap da d$ 
 
@@ -599,6 +597,7 @@ endif
 "for adding a print statement in python
 :nnoremap pw lbywoprint "<Esc>p<S-A>: " + str(<Esc>p<S-A>)<Esc>j0
 :nnoremap aa ^
+:nnoremap mm $
 ":nnoremap gb ^
 :nnoremap de d$
 
@@ -608,6 +607,9 @@ endif
 :smap ij <Esc>
 :vmap ij <Esc>
 :onoremap  ij <Esc>
+"search under the cursor
+:nnoremap // <S-*>
+
 ""-----every thing necessary for search and replace---
 :nnoremap <Leader>s :%s/
 ""search and replace with auto completion
@@ -648,8 +650,16 @@ nnoremap <leader>i i<space>
 " size of a hard tabstop
 
 "prog1: info regarding work life
-nmap prog1 :vsplit /nfs/pdx/home/bborouje/monitoring/progress_work.txt
+nmap gt :vsplit ~/behzad_local/personal/todo.txt <Enter>
+nmap gp :vsplit ~/behzad_local/personal/live_better_problems.txt <Enter>
+nmap gh :vsplit ~/behzad_local/personal/live_better_hyp.txt <Enter>
+nmap gs :vsplit ~/behzad_local/personal/live_better_solutions.txt <Enter>
+nmap gb :vsplit ~/behzad_local/personal/habitualize.txt <Enter>
+nmap gx :vsplit ~/behzad_local/personal/habitualize.txt <Enter>
+
+
 "prog2: info regarding home,outside life (other things)
+nmap sc :vsplit ~/scratch <Enter>
 nmap prog2 :vsplit /nfs/pdx/home/bborouje/monitoring/progress_others.txt
 
 ",t makes a tab both in normal and visual mode
@@ -695,6 +705,9 @@ vnoremap <C-c> "*y
 :vnoremap qcco :s/^..//<Enter>j^
 
 
+
+:nnoremap ss :split scratch.txt <Enter>
+
 "tabing"
 :vnoremap tb :s/^/  <Enter>j^ 
 :vnoremap ttb :s/^/         <Enter>j^
@@ -733,7 +746,8 @@ vnoremap <C-c> "*y
 :nnoremap pyline ^i#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<ESC>j^
 
 
-
+"great for doc in python
+:nnoremap pydoc ^i#=============================<ESC>j^ 
 
 "------------python helpers"
 "used to explain a function"
@@ -772,6 +786,7 @@ vnoremap <C-c> "*y
 :nnoremap pydis ^i#**--------------------**<Enter>#**--------------------**<Enter>#----disclaimers:::<Enter>#**--------------------**<Enter>#--------------------**<ESC>kkk<S-A>
 
 :nnoremap pytodo ^i#**--------------------**<Enter>#**--------------------**<Enter>#----todo:::<Enter>#**--------------------**<Enter>#--------------------**<ESC>kkk<S-A>
+
 
 "
 
@@ -893,6 +908,23 @@ nnoremap # v%
 "map \s :ScreenSend<CR> 
 
 
+"chaning the color slightly upon entering insert mode"
+"au InsertEnter * hi Normal ctermbg=255 guibg=#e8e8e8
+"au InsertLeave * hi Normal ctermbg=255guibg=#ffffff
+
+"changing cursor shape for different modes"
+"if has("autocmd")
+"    au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+"    au InsertEnter,InsertChange *
+"                \ if v:insertmode == 'i' | 
+"                \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+"                \ elseif v:insertmode == 'r' |
+"                \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+"                \ endif
+"    au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+"endif
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
 
 "au FileType * setlocal formatoptions-=c formatoptions-=o
 
@@ -904,5 +936,6 @@ nnoremap # v%
 "-----------------------------------------------------------------------------------------------------------------------some NOTES
 "change the tabs equivalent of spaces  :set tabstop=4
 "
+
 set virtualedit=onemore
 
