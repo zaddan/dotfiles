@@ -12,6 +12,8 @@ esac
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+alias fc='fc e : '
 rfc () {
     fc -e : $1 $2
 }
@@ -21,10 +23,10 @@ alias gp='vim ~/behzad_local/personal/live_better_problem'
 alias gh='vim ~/behzad_local/personal/live_better_hyp.txt'
 alias gs='vim ~/behzad_local/personal/live_better_solutions.txt'
 alias gb='vim ~/behzad_local/personal/habitualize.txt'
-alias sc='vim ~/scratch
-alias fc ='fc e : '
+alias sc='vim ~/scratch'
 
-# don't put duplicate lines or lines starting with space in the history.
+#
+#don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
@@ -38,7 +40,6 @@ HISTFILESIZE=9000
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 #shopt -s checkwinsize
-
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
@@ -92,7 +93,7 @@ esac
 alias hs='history 20 > ~/tempo; python ~/behzad_local/usefull_stuff/misc/python_collection/necessary/history.py'
 
 
-export -f hs
+#export -f hs
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -173,11 +174,7 @@ export
 #PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$HOME/learning_collections/python_collection/necessary:$HOME/behzad_local/gem5-src-code/gem5-stable/src/python:$HOME/behzad_local/gem5-src-code/gem5-stable/src/python/m5:$HOME/behzad_local/gem5-src-code/gem5-stable/src/python/swig:$HOME/behzad_local/gem5-src-code/gem5-stable/src/sim/
 
 
-export
-PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$HOME/local_drive/usefull_stuff/misc/python_collection/necessary:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python/m5:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python/swig:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/sim:$HOME/local_drive/usefull_stuff/python_libs:$HOME/local_drive/usefull_stuff/misc
-
-
-
+export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$HOME/local_drive/usefull_stuff/misc/python_collection/necessary:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python/m5:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/python/swig:$HOME/behzad_local/gem5-src-code/gem5-stable/build/X86/sim:$HOME/local_drive/usefull_stuff/python_libs:$HOME/local_drive/usefull_stuff/misc
 
 export PYTHONPATH="${PYTHONPATH}:/home/polaris/behzad/python_collection/necessary/"
 export PYTHONPATH="${PYTHONPATH}:/home/polaris/behzad/apx_tool_chain/src/python_files/"
@@ -215,20 +212,17 @@ color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[31m&\e[m,'>&2)3>&1
 #PROMPT_COMMAND='undirect;'
 
 #gpgpu stuff
-export LD_LIBRARY_PATH=/home/local/optimus/kishore/modelling/cuda_4.0/:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/lib64:$LD_LIBRARY_PATH
-export PATH=/home/local/optimus/kishore/modelling/cuda_4.0/:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/bin:$PATH  
+#export LD_LIBRARY_PATH=/home/local/optimus/kishore/modelling/cuda_4.0/:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/lib64:$LD_LIBRARY_PATH
+#export PATH=/home/local/optimus/kishore/modelling/cuda_4.0/:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/bin:$PATH  
 #export PATH=/home/local/optimus/kishore/modelling/cuda_4.0/cuda:/home/local/optimus/kishore/modelling/cuda_4.0/cuda/bin:$PATH  
-export CUDA_INSTALL_PATH=/home/local/optimus/kishore/modelling/cuda_4.0/cuda/
-#end of gpgpu stuff 
+#export CUDA_INSTALL_PATH=/home/local/optimus/kishore/modelling/cuda_4.0/cuda/
 
 
 setterm -blength 0
 PERL_MB_OPT="--install_base \"/home/polaris/behzad/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/polaris/behzad/perl5"; export PERL_MM_OPT;
-export PATH=$HOME/local/bin:$PATH
-export PATH=$HOME/local/bin:$PATH
-export PATH=$HOME/behzad_local/usefull_stuff/bin/:$PATH
-
+export PATH=$HOME/local/bin:$HOME/behzad_local/usefull_stuff/bin/:$HOME/behzad_local/clang/bin/:$PATH
+#:$PATH
 #virtual env
 source  ~/.local/lib/bin/activate
 
