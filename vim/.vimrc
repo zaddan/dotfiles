@@ -34,8 +34,8 @@ nmap rr <Plug>(easymotion-s2)
 ":nnoremap b <S-b>
 ":nnoremap <S-b> b 
 "Pathogen Plugin
-execute pathogen#infect()
-call pathogen#helptags()
+"execute pathogen#infect()
+"call pathogen#helptags()
 "generate helptags for everything in ‘runtimepath’
 
 "syntastic Plugin
