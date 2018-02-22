@@ -1,38 +1,25 @@
 [global_config]
-  window_state = maximise
-  title_inactive_fg_color = "#f3ebeb"
-  handle_size = 1
-  title_transmit_fg_color = "#0b0417"
-  title_transmit_bg_color = "#004cc8"
 [keybindings]
-  go_up = <Ctrl><Shift>k
-  resize_up = <Alt>k
-  move_tab_left = <Primary><Shift>d
-  resize_left = <Alt>h
-  split_horiz = <CTRL><Shift><Alt>j
-  move_tab_right = <Primary><Shift>d
-  go_down = <Ctrl><Shift>j
-  split_vert = <Ctrl><Shift><Alt>l
-  go_right = <Ctrl><Shift>l
-  go_left = <Ctrl><Shift>h
-  resize_right = <Alt>l
-  resize_down = <Alt>j
-  toggle_scrollbar = <Primary>w
-  toggle_zoom = <Ctrl><Shift>o
-[profiles]
-  [[default]]
-    use_system_font = False
-    split_to_group = True
-    foreground_color = "#000000"
-    font = Monospace 12
-    background_color = "#ffffff"
-    allow_bold = False
+  go_down = <Primary><Shift>j
+  go_left = <Primary><Shift>h
+  go_right = <Primary><Shift>l
+  go_up = <Primary><Shift>k
+  split_horiz = <Primary><Shift><Alt>j
+  split_vert = <Primary><Shift><Alt>l
+  toggle_zoom = <Primary><Shift>o
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#b4c8d7"
+    background_image = None
+    font = Monospace 12
+    foreground_color = "#454242"
+    use_system_font = False
