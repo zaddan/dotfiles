@@ -226,4 +226,4 @@ export PATH=$HOME/local/bin:$HOME/behzad_local/usefull_stuff/bin/:$HOME/behzad_l
 #virtual env
 source  ~/.local/lib/bin/activate
 
-
+set -o vim
